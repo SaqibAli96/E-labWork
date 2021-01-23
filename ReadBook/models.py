@@ -7,10 +7,10 @@ class UserInfo(models.Model):
 
      #Use model extension
     user_type = models.CharField(max_length=6)
-
+    
     def __str__(self):
-         return self.users.username
-
+        return self.user_type
+ 
 class Book(models.Model):
     book_name = models.CharField(max_length=50)
     uploaded_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
@@ -25,5 +25,3 @@ class Book(models.Model):
     def __str__(self):
         return str(self.book_name)
 
-class photo(models.Model):
-    empty_cover = models.ImageField(upload_to = 'default/', null=True)
