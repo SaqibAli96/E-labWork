@@ -3,10 +3,12 @@
 
     {% if not book.book_price %}
       <!-- free -->
-      <a href="" class="btn waves-effect" style="width:100%" target="_blank"><i class="material-icons" style="vertical-align: inherit;"> chrome_reader_mode</i> Free </a>
-
+      <a href="{book.book_file.url}"  class="btn waves-effect" style="width:100%" target="_blank"><i class="material-icons" style="vertical-align: inherit;" download>Free </a>
+      <button  href="{book.book_file.url}" download>Download</button>
       <!-- buy -->
-      <div style="margin: 10px;">
+      
+      
+       <div style="margin: 10px;">
         <form action="" method="POST">
           {% csrf_token %}
           <button class="btn waves-effect" type="submit" style="width:100%">

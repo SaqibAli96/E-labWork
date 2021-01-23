@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from ReadBook.models import Book,photo
+from ReadBook.models import Book
 from django.contrib import messages
 from ReadBook.decorators import author_only 
 from django.contrib.auth.decorators import login_required
@@ -8,8 +8,7 @@ from django.contrib.auth.decorators import login_required
 def loadBook(request):
     if request.user.is_authenticated:
         books = Book.objects.all()
-        cover = photo.objects.all()
-        return render(request,"ReadBook/Book.html",context={"books": books,"cover": cover})
+        return render(request,"ReadBook/Book.html",context={"books": books})
     else:
         messages.info(request,"Please login")
         return redirect("/login")
