@@ -1,33 +1,14 @@
-
 {% extends 'Base/Header.html' %} {% block content %}
 
-    {% if not book.book_price %}
-      <!-- free -->
-      <a href="{book.book_file.url}"  class="btn waves-effect" style="width:100%" target="_blank"><i class="material-icons" style="vertical-align: inherit;" download>Free </a>
-      <button  href="{book.book_file.url}" download>Download</button>
-      <!-- buy -->
-      
-      
-       <div style="margin: 10px;">
-        <form action="" method="POST">
-          {% csrf_token %}
-          <button class="btn waves-effect" type="submit" style="width:100%">
-            ${{book.book_price}}
-          </button>
-        </form>
-      </div>
-      {% elif loggedin %}
-      <!-- bought -->
-      <div style="margin: 10px;">
-        <a href="" class="btn waves-effect" style="width:100%" target="_blank"><i class="material-icons" style="vertical-align: inherit;"> file_download</i> DOWNLOAD</a>
-      </div>
-      {% endif %}
-    </div>
+{% if not book.book_price %}
+  <a href="" class="btn waves-effect" style="width:100%"><i class="material-icons" style="vertical-align: inherit;"> chrome_reader_mode</i> Free </a>
+  <a href="{{book.book_file_url}}" download="{{book.book_file.url}}">Download</a>
+{% endif %}
     <!-- image section ends -->
 
     <!-- description section -->
-    <div class="col s12 m6 l7">
-      <div class="" style="height:0px; min-height: 367px; margin-bottom: 13px; padding: 10px; border-bottom: 1px solid #8a8a8a82; overflow: hidden;">
+<div class="col s12 m6 l7">
+  <div class="" style="height:0px; min-height: 367px; margin-bottom: 13px; padding: 10px; border-bottom: 1px solid #8a8a8a82; overflow: hidden;">
         <h6 style="margin-top: 5px; font-weight: 501; display: inline-block;">
           Description:
         </h6>
@@ -35,8 +16,8 @@
         <p style="text-align: justify; margin:5px 0px;">
           &emsp; {{book.book_description}}
         </p>
-      </div>
-    </div>
+  </div>
+</div>
     <!-- description section ends -->
 
           </form>
